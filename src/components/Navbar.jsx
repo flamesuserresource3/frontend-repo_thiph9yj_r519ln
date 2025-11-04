@@ -1,36 +1,42 @@
 import { useState } from 'react';
 import { Rocket, Menu, X } from 'lucide-react';
+import { Link, NavLink } from 'react-router-dom';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    { href: '#home', label: 'Home' },
-    { href: '#events', label: 'Events' },
-    { href: '#about', label: 'About' },
-    { href: '#blog', label: 'Blog' },
-    { href: '#contact', label: 'Contact' },
+    { to: '/', label: 'Home' },
+    { to: '/events', label: 'Events' },
+    { to: '/about', label: 'About' },
+    { to: '/blog', label: 'Blog' },
+    { to: '/contact', label: 'Contact' },
   ];
 
+  const linkClass = ({ isActive }) =>
+    `text-slate-600 hover:text-slate-900 transition-colors ${isActive ? 'text-slate-900 font-medium' : ''}`;
+
   return (
-    <header className="sticky top-0 z-50 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-slate-200">
+    <header className="sticky top-0 z-40 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-slate-200">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <a href="#home" className="flex items-center gap-2 font-semibold text-slate-900">
+          <Link to="/" className="flex items-center gap-2 font-semibold text-slate-900">
             <span className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-gradient-to-tr from-emerald-600 to-indigo-600 text-white">
               <Rocket size={18} />
             </span>
             <span className="tracking-tight">VIT Bhopal • Data Science Club</span>
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-8">
             {links.map((l) => (
-              <a key={l.href} href={l.href} className="text-slate-600 hover:text-slate-900 transition-colors">
+              <NavLink key={l.to} to={l.to} className={linkClass} end={l.to === '/'}>
                 {l.label}
-              </a>
+              </NavLink>
             ))}
             <a
-              href="#events"
+              href="https://forms.gle/"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-md bg-slate-900 text-white px-4 py-2 text-sm shadow-sm hover:bg-slate-800"
             >
               Join Us
@@ -49,17 +55,22 @@ export default function Navbar() {
         {open && (
           <div className="md:hidden pb-4 space-y-2">
             {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
+              <NavLink
+                key={l.to}
+                to={l.to}
                 onClick={() => setOpen(false)}
-                className="block rounded-md px-3 py-2 text-slate-700 hover:bg-slate-100"
+                className={({ isActive }) =>
+                  `block rounded-md px-3 py-2 text-slate-700 hover:bg-slate-100 ${isActive ? 'bg-slate-100 font-medium' : ''}`
+                }
+                end={l.to === '/'}
               >
                 {l.label}
-              </a>
+              </NavLink>
             ))}
             <a
-              href="#events"
+              href="https://forms.gle/"
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setOpen(false)}
               className="block text-center rounded-md bg-slate-900 text-white px-4 py-2"
             >
