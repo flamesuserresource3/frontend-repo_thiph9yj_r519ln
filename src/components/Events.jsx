@@ -1,67 +1,52 @@
-import { Calendar, MapPin } from 'lucide-react';
-
 const events = [
   {
-    title: 'Intro to Machine Learning Workshop',
-    date: 'Nov 15, 2025',
-    location: 'Innovation Lab, Block A',
-    description:
-      'Hands-on session covering supervised learning fundamentals with scikit-learn and practical exercises.',
-    tag: 'Workshop',
+    id: 1,
+    title: 'Intro to Machine Learning',
+    date: 'Nov 18, 2025',
+    location: 'Auditorium A',
+    link: '#',
   },
   {
-    title: 'DataViz Challenge: Tell a Story',
-    date: 'Nov 28, 2025',
-    location: 'Auditorium 2',
-    description:
-      'Team-based challenge to turn raw data into compelling visual narratives using Python, Tableau, or Web tools.',
-    tag: 'Challenge',
+    id: 2,
+    title: 'Hands-on: Data Viz with Python',
+    date: 'Dec 02, 2025',
+    location: 'Lab 3, Block C',
+    link: '#',
   },
   {
-    title: 'Career Panel: Paths in Data',
-    date: 'Dec 6, 2025',
-    location: 'Online (Zoom)',
-    description:
-      'Hear from alumni and industry professionals about roles across ML, analytics, research, and data engineering.',
-    tag: 'Panel',
+    id: 3,
+    title: 'AI Ethics Roundtable',
+    date: 'Dec 15, 2025',
+    location: 'Seminar Hall',
+    link: '#',
   },
 ];
 
-export default function Events() {
+const Events = () => {
   return (
-    <section id="events" className="py-20 sm:py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">Upcoming Events</h2>
-          <p className="mt-3 text-slate-600">
-            Join our sessions to level up your skills, meet collaborators, and build your portfolio.
-          </p>
-        </div>
+    <section className="mx-auto max-w-6xl px-4 py-16">
+      <h2 className="text-2xl md:text-3xl font-bold">Upcoming Events</h2>
+      <p className="mt-2 text-white/70">Learn, build, and grow with our weekly sessions and special workshops.</p>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {events.map((e) => (
-            <article key={e.title} className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm hover:shadow-md transition-shadow">
-              <div className="inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-xs font-medium bg-slate-100 text-slate-700">
-                {e.tag}
-              </div>
-              <h3 className="mt-4 text-lg font-semibold text-slate-900 group-hover:text-indigo-600">
-                {e.title}
-              </h3>
-              <p className="mt-2 text-slate-600 text-sm">{e.description}</p>
-              <div className="mt-4 flex items-center gap-4 text-sm text-slate-700">
-                <span className="inline-flex items-center gap-1"><Calendar size={16} /> {e.date}</span>
-                <span className="inline-flex items-center gap-1"><MapPin size={16} /> {e.location}</span>
-              </div>
-              <a
-                href="#contact"
-                className="mt-6 inline-flex items-center text-indigo-600 hover:text-indigo-500 font-medium"
-              >
-                Register Interest →
-              </a>
-            </article>
-          ))}
-        </div>
+      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {events.map((e) => (
+          <article
+            key={e.id}
+            className="rounded-xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm hover:border-white/20"
+          >
+            <h3 className="text-lg font-semibold">{e.title}</h3>
+            <p className="mt-2 text-sm text-white/70">{e.date} • {e.location}</p>
+            <a
+              href={e.link}
+              className="mt-4 inline-block rounded-md bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/15"
+            >
+              Register
+            </a>
+          </article>
+        ))}
       </div>
     </section>
   );
-}
+};
+
+export default Events;

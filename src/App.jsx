@@ -1,21 +1,27 @@
 import { BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 import BackgroundSpline from './components/BackgroundSpline';
 import Pages from './components/Pages';
+import Footer from './components/Footer';
 
-export default function App() {
+function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-white text-slate-900">
-        {/* Interactive 3D background present on all pages */}
-        <BackgroundSpline sceneUrl="https://prod.spline.design/6v0n7VQb1lQ7Jb2G/scene.splinecode" />
-        <Navbar />
-        <main className="relative z-10">
-          <Pages />
-        </main>
-        <Footer />
+      <div className="relative min-h-screen text-white bg-black overflow-x-hidden">
+        {/* 3D background lives at the root so it persists across pages */}
+        <BackgroundSpline />
+
+        {/* Foreground content */}
+        <div className="relative z-10 flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1">
+            <Pages />
+          </main>
+          <Footer />
+        </div>
       </div>
     </BrowserRouter>
   );
 }
+
+export default App;

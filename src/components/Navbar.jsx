@@ -1,84 +1,53 @@
-import { useState } from 'react';
-import { Rocket, Menu, X } from 'lucide-react';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Rocket } from 'lucide-react';
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
+const navLinkClass = ({ isActive }) =>
+  `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+    isActive ? 'text-white bg-white/10' : 'text-white/70 hover:text-white hover:bg-white/10'
+  }`;
 
-  const links = [
-    { to: '/', label: 'Home' },
-    { to: '/events', label: 'Events' },
-    { to: '/about', label: 'About' },
-    { to: '/blog', label: 'Blog' },
-    { to: '/contact', label: 'Contact' },
-  ];
-
-  const linkClass = ({ isActive }) =>
-    `text-slate-600 hover:text-slate-900 transition-colors ${isActive ? 'text-slate-900 font-medium' : ''}`;
-
+const Navbar = () => {
   return (
-    <header className="sticky top-0 z-40 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-slate-200">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <Link to="/" className="flex items-center gap-2 font-semibold text-slate-900">
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-gradient-to-tr from-emerald-600 to-indigo-600 text-white">
-              <Rocket size={18} />
-            </span>
-            <span className="tracking-tight">VIT Bhopal • Data Science Club</span>
-          </Link>
+    <header className="sticky top-0 z-20 backdrop-blur-md bg-black/30">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="flex h-16 items-center justify-between">
+          <NavLink to="/" className="flex items-center gap-2">
+            <div className="grid h-9 w-9 place-items-center rounded-md bg-gradient-to-br from-cyan-500 to-fuchsia-500">
+              <Rocket className="h-5 w-5 text-white" />
+            </div>
+            <span className="text-white font-semibold tracking-wide">DSC VIT Bhopal</span>
+          </NavLink>
 
-          <div className="hidden md:flex items-center gap-8">
-            {links.map((l) => (
-              <NavLink key={l.to} to={l.to} className={linkClass} end={l.to === '/'}>
-                {l.label}
-              </NavLink>
-            ))}
-            <a
-              href="https://forms.gle/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-slate-900 text-white px-4 py-2 text-sm shadow-sm hover:bg-slate-800"
-            >
-              Join Us
-            </a>
-          </div>
+          <nav className="hidden md:flex items-center gap-1">
+            <NavLink to="/" className={navLinkClass} end>
+              Home
+            </NavLink>
+            <NavLink to="/events" className={navLinkClass}>
+              Events
+            </NavLink>
+            <NavLink to="/about" className={navLinkClass}>
+              About
+            </NavLink>
+            <NavLink to="/blog" className={navLinkClass}>
+              Blog
+            </NavLink>
+            <NavLink to="/contact" className={navLinkClass}>
+              Contact
+            </NavLink>
+          </nav>
 
-          <button
-            className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-slate-600 hover:text-slate-900"
-            onClick={() => setOpen((o) => !o)}
-            aria-label="Toggle Menu"
+          <a
+            href="https://forms.gle/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-md bg-white/90 px-4 py-2 text-sm font-semibold text-black hover:bg-white"
           >
-            {open ? <X /> : <Menu />}
-          </button>
+            Join Us
+          </a>
         </div>
-
-        {open && (
-          <div className="md:hidden pb-4 space-y-2">
-            {links.map((l) => (
-              <NavLink
-                key={l.to}
-                to={l.to}
-                onClick={() => setOpen(false)}
-                className={({ isActive }) =>
-                  `block rounded-md px-3 py-2 text-slate-700 hover:bg-slate-100 ${isActive ? 'bg-slate-100 font-medium' : ''}`
-                }
-                end={l.to === '/'}
-              >
-                {l.label}
-              </NavLink>
-            ))}
-            <a
-              href="https://forms.gle/"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => setOpen(false)}
-              className="block text-center rounded-md bg-slate-900 text-white px-4 py-2"
-            >
-              Join Us
-            </a>
-          </div>
-        )}
-      </nav>
+      </div>
     </header>
   );
-}
+};
+
+export default Navbar;

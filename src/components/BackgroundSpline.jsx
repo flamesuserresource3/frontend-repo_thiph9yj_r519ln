@@ -1,10 +1,17 @@
 import Spline from '@splinetool/react-spline';
 
-export default function BackgroundSpline({ sceneUrl }) {
+const BackgroundSpline = () => {
   return (
-    <div className="fixed inset-0" aria-hidden>
-      <Spline scene={sceneUrl} style={{ width: '100%', height: '100%' }} />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-emerald-50/40 via-white/20 to-white/60" />
+    <div className="fixed inset-0">
+      <Spline
+        scene="https://prod.spline.design/9G0eWz8wmv30S19F/scene.splinecode"
+        style={{ width: '100%', height: '100%' }}
+      />
+
+      {/* Subtle gradient + vignette overlay that doesn't block interaction */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
     </div>
   );
-}
+};
+
+export default BackgroundSpline;
