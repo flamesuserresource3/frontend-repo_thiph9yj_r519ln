@@ -8,6 +8,7 @@ export default function Navbar() {
     { href: '#home', label: 'Home' },
     { href: '#events', label: 'Events' },
     { href: '#about', label: 'About' },
+    { href: '#blog', label: 'Blog' },
     { href: '#contact', label: 'Contact' },
   ];
 
@@ -16,7 +17,7 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#home" className="flex items-center gap-2 font-semibold text-slate-900">
-            <span className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-gradient-to-tr from-indigo-600 to-fuchsia-500 text-white">
+            <span className="inline-flex items-center justify-center w-9 h-9 rounded-md bg-gradient-to-tr from-emerald-600 to-indigo-600 text-white">
               <Rocket size={18} />
             </span>
             <span className="tracking-tight">VIT Bhopal • Data Science Club</span>

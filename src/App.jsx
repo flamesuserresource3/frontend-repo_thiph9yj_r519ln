@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Events from './components/Events';
+import Blog from './components/Blog';
 import Footer from './components/Footer';
 
 function About() {
@@ -16,10 +17,10 @@ function About() {
               and campus collaborations with research groups and industry partners.
             </p>
             <ul className="mt-6 grid gap-3 text-slate-700">
-              <li className="inline-flex items-start gap-3"><span className="mt-1 h-2.5 w-2.5 rounded-full bg-indigo-600" />Hands-on workshops and code-alongs</li>
-              <li className="inline-flex items-start gap-3"><span className="mt-1 h-2.5 w-2.5 rounded-full bg-indigo-600" />Open-source and research-driven projects</li>
-              <li className="inline-flex items-start gap-3"><span className="mt-1 h-2.5 w-2.5 rounded-full bg-indigo-600" />Peer mentorship and interview prep</li>
-              <li className="inline-flex items-start gap-3"><span className="mt-1 h-2.5 w-2.5 rounded-full bg-indigo-600" />Hackathons, talks, and community meetups</li>
+              <li className="inline-flex items-start gap-3"><span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-600" />Hands-on workshops and code-alongs</li>
+              <li className="inline-flex items-start gap-3"><span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-600" />Open-source and research-driven projects</li>
+              <li className="inline-flex items-start gap-3"><span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-600" />Peer mentorship and interview prep</li>
+              <li className="inline-flex items-start gap-3"><span className="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-600" />Hackathons, talks, and community meetups</li>
             </ul>
           </div>
           <div>
@@ -55,6 +56,7 @@ export default function App() {
         <Hero />
         <Events />
         <About />
+        <Blog />
       </main>
       <Footer />
     </div>
